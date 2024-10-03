@@ -13,6 +13,23 @@ jobs:
     name: OWASP ZAP Security Scan
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_PORT: 3306
+          MYSQL_USER: dvna
+          MYSQL_PASSWORD: passw0rd
+          MYSQL_DATABASE: dvna
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
     steps:
       # Étape 1 : Récupérer le code source du dépôt
       - name: Checkout repository
@@ -32,17 +49,30 @@ jobs:
       - name: Install wait-on
         run: npm install -g wait-on
 
-      # Étape 5 : Démarrer l'application en arrière-plan
+      # Étape 5 : Attendre que MySQL soit disponible
+      - name: Wait for MySQL
+        run: |
+          while ! mysqladmin ping -h"localhost" --silent; do
+            echo "Waiting for MySQL...";
+            sleep 5;
+          done
+
+      # Étape 6 : Démarrer l'application en arrière-plan
       - name: Start the application
+        env:
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_PORT: 3306
+          MYSQL_USER: dvna
+          MYSQL_PASSWORD: passw0rd
+          MYSQL_DATABASE: dvna
         run: npm start &
 
-      # Étape 6 : Attendre que l'application soit disponible sur le port 3000
+      # Étape 7 : Attendre que l'application soit disponible sur le port 9090
       - name: Wait for the application to start
         run: wait-on http://localhost:9090
 
-      # Étape 7 : Lancer le scan OWASP ZAP
+      # Étape 8 : Lancer le scan OWASP ZAP
       - name: Run OWASP ZAP full scan
         uses: zaproxy/action-full-scan@v0.2.0
         with:
           target: 'http://localhost:9090'
-
