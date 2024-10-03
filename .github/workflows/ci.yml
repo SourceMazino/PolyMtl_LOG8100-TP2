@@ -43,7 +43,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Étape 4 : Installer wait-on pour attendre que l'application soit prête
+       # Étape 4 : Installer wait-on pour attendre que l'application soit prête
       - name: Install wait-on
         run: npm install -g wait-on
 
