@@ -1,5 +1,5 @@
 # Random Web APP
-
+[![CI Pipeline for DVNA](https://github.com/SourceMazino/PolyMtl_LOG8100-TP2/actions/workflows/ci.yml/badge.svg)](https://github.com/SourceMazino/PolyMtl_LOG8100-TP2/actions/workflows/ci.yml)
 ### Using Official Docker Image
 
 TODO HERE
