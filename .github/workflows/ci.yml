@@ -79,7 +79,6 @@ jobs:
           target: 'http://127.0.0.1:9090'
           cmd_options: '-J "docs/zap/zap-report-${{ env.CURRENT_DATE }}.json"'
         continue-on-error: true
-        run: echo "$GITHUB_WORKSPACE"
       
       # # Étape 8 : Commiter et pousser le rapport dans docs/zap/
       # - name: Commit and Push ZAP Report
