@@ -5,6 +5,7 @@ var session = require('express-session')
 var ejs = require('ejs')
 var morgan = require('morgan')
 const fileUpload = require('express-fileupload');
+var config = require('./config/server')
 
 //Initialize Express
 var app = express()
@@ -38,6 +39,4 @@ app.use('/app',require('./routes/app')())
 app.use('/',require('./routes/main')(passport))
 
 // Start Server
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
-});
+app.listen(config.port, config.listen)
