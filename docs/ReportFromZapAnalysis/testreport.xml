@@ -1,0 +1,1264 @@
+<?xml version="1.0"?>
+<OWASPZAPReport programName="ZAP" version="2.15.0" generated="Mon, 30 Sep 2024 18:02:51">
+	
+		<site name="http://localhost:9090" host="localhost" port="9090" ssl="false">
+			<alerts>
+				
+					<alertitem>
+						<pluginid>10055</pluginid>
+						<alertRef>10055-4</alertRef>
+						<alert>CSP: Wildcard Directive</alert>
+						<name>CSP: Wildcard Directive</name>
+						<riskcode>2</riskcode>
+						<confidence>3</confidence>
+						<riskdesc>Medium (High)</riskdesc>
+						<confidencedesc>High</confidencedesc>
+						<desc>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks. Including (but not limited to) Cross Site Scripting (XSS), and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page &#x2014; covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/robots.txt</uri>
+									<method>GET</method>
+									<param>Content-Security-Policy</param>
+									<attack></attack>
+									<evidence>default-src &apos;self&apos;</evidence>
+									<otherinfo>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:
+frame-ancestors, form-action
+
+The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/sitemap.xml</uri>
+									<method>GET</method>
+									<param>Content-Security-Policy</param>
+									<attack></attack>
+									<evidence>default-src &apos;self&apos;</evidence>
+									<otherinfo>The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:
+frame-ancestors, form-action
+
+The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.</otherinfo>
+								</instance>
+							
+						</instances>
+						<count>2</count>
+						<solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is properly configured to set the Content-Security-Policy header.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;The following directives either allow wildcard sources (or ancestors), are not defined, or are overly broadly defined:&lt;/p&gt;&lt;p&gt;frame-ancestors, form-action&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;The directive(s): frame-ancestors, form-action are among the directives that do not fallback to default-src, missing/excluding them is the same as allowing anything.&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;https://www.w3.org/TR/CSP/&lt;/p&gt;&lt;p&gt;https://caniuse.com/#search=content+security+policy&lt;/p&gt;&lt;p&gt;https://content-security-policy.com/&lt;/p&gt;&lt;p&gt;https://github.com/HtmlUnit/htmlunit-csp&lt;/p&gt;&lt;p&gt;https://developers.google.com/web/fundamentals/security/csp#policy_applies_to_a_wide_variety_of_resources&lt;/p&gt;</reference>
+						<cweid>693</cweid>
+						<wascid>15</wascid>
+						<sourceid>11</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10038</pluginid>
+						<alertRef>10038-1</alertRef>
+						<alert>Content Security Policy (CSP) Header Not Set</alert>
+						<name>Content Security Policy (CSP) Header Not Set</name>
+						<riskcode>2</riskcode>
+						<confidence>3</confidence>
+						<riskdesc>Medium (High)</riskdesc>
+						<confidencedesc>High</confidencedesc>
+						<desc>&lt;p&gt;Content Security Policy (CSP) is an added layer of security that helps to detect and mitigate certain types of attacks, including Cross Site Scripting (XSS) and data injection attacks. These attacks are used for everything from data theft to site defacement or distribution of malware. CSP provides a set of standard HTTP headers that allow website owners to declare approved sources of content that browsers should be allowed to load on that page &#x2014; covered types are JavaScript, CSS, HTML frames, fonts, images and embeddable objects such as Java applets, ActiveX, audio and video files.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/register</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>3</count>
+						<solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Content-Security-Policy header.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&lt;/p&gt;&lt;p&gt;https://cheatsheetseries.owasp.org/cheatsheets/Content_Security_Policy_Cheat_Sheet.html&lt;/p&gt;&lt;p&gt;https://www.w3.org/TR/CSP/&lt;/p&gt;&lt;p&gt;https://w3c.github.io/webappsec-csp/&lt;/p&gt;&lt;p&gt;https://web.dev/articles/csp&lt;/p&gt;&lt;p&gt;https://caniuse.com/#feat=contentsecuritypolicy&lt;/p&gt;&lt;p&gt;https://content-security-policy.com/&lt;/p&gt;</reference>
+						<cweid>693</cweid>
+						<wascid>15</wascid>
+						<sourceid>20</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10020</pluginid>
+						<alertRef>10020-1</alertRef>
+						<alert>Missing Anti-clickjacking Header</alert>
+						<name>Missing Anti-clickjacking Header</name>
+						<riskcode>2</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Medium (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The response does not protect against &apos;ClickJacking&apos; attacks. It should include either Content-Security-Policy with &apos;frame-ancestors&apos; directive or X-Frame-Options.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param>x-frame-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param>x-frame-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/register</uri>
+									<method>GET</method>
+									<param>x-frame-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>3</count>
+						<solution>&lt;p&gt;Modern Web browsers support the Content-Security-Policy and X-Frame-Options HTTP headers. Ensure one of them is set on all web pages returned by your site/app.&lt;/p&gt;&lt;p&gt;If you expect the page to be framed only by pages on your server (e.g. it&apos;s part of a FRAMESET) then you&apos;ll want to use SAMEORIGIN, otherwise if you never expect the page to be framed, you should use DENY. Alternatively consider implementing Content Security Policy&apos;s &quot;frame-ancestors&quot; directive.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options&lt;/p&gt;</reference>
+						<cweid>1021</cweid>
+						<wascid>15</wascid>
+						<sourceid>20</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>90003</pluginid>
+						<alertRef>90003</alertRef>
+						<alert>Sub Resource Integrity Attribute Missing</alert>
+						<name>Sub Resource Integrity Attribute Missing</name>
+						<riskcode>2</riskcode>
+						<confidence>3</confidence>
+						<riskdesc>Medium (High)</riskdesc>
+						<confidencedesc>High</confidencedesc>
+						<desc>&lt;p&gt;The integrity attribute is missing on a script or link tag served by an external server. The integrity tag prevents an attacker who have gained access to this server from injecting a malicious content.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;link id=&quot;bootstrap_styles&quot; rel=&quot;stylesheet&quot;
+      href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&quot; type=&quot;text/css&quot;/&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot;
+        src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot; src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;link id=&quot;bootstrap_styles&quot; rel=&quot;stylesheet&quot;
+      href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&quot; type=&quot;text/css&quot;/&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot;
+        src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot; src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>8</count>
+						<solution>&lt;p&gt;Provide a valid integrity attribute to the tag.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity&lt;/p&gt;</reference>
+						<cweid>345</cweid>
+						<wascid>15</wascid>
+						<sourceid>20</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10003</pluginid>
+						<alertRef>10003</alertRef>
+						<alert>Vulnerable JS Library</alert>
+						<name>Vulnerable JS Library</name>
+						<riskcode>2</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Medium (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The identified library jquery, version 3.2.1 is vulnerable.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/assets/jquery-3.2.1.min.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>jquery-3.2.1.min.js</evidence>
+									<otherinfo>CVE-2020-11023
+CVE-2020-11022
+CVE-2019-11358
+</otherinfo>
+								</instance>
+							
+						</instances>
+						<count>1</count>
+						<solution>&lt;p&gt;Please upgrade to the latest version of jquery.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;CVE-2020-11023&lt;/p&gt;&lt;p&gt;CVE-2020-11022&lt;/p&gt;&lt;p&gt;CVE-2019-11358&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;https://blog.jquery.com/2019/04/10/jquery-3-4-0-released/&lt;/p&gt;&lt;p&gt;https://nvd.nist.gov/vuln/detail/CVE-2019-11358&lt;/p&gt;&lt;p&gt;https://github.com/jquery/jquery/commit/753d591aea698e57d6db58c9f722cd0808619b1b&lt;/p&gt;&lt;p&gt;https://blog.jquery.com/2020/04/10/jquery-3-5-0-released/&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</reference>
+						<cweid>829</cweid>
+						<wascid>-1</wascid>
+						<sourceid>26</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10054</pluginid>
+						<alertRef>10054-1</alertRef>
+						<alert>Cookie without SameSite Attribute</alert>
+						<name>Cookie without SameSite Attribute</name>
+						<riskcode>1</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Low (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;A cookie has been set without the SameSite attribute, which means that the cookie can be sent as a result of a &apos;cross-site&apos; request. The SameSite attribute is an effective counter measure to cross-site request forgery, cross-site script inclusion, and timing attacks.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>set-cookie: connect.sid</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>set-cookie: connect.sid</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>set-cookie: connect.sid</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/robots.txt</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>set-cookie: connect.sid</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/sitemap.xml</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>set-cookie: connect.sid</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>5</count>
+						<solution>&lt;p&gt;Ensure that the SameSite attribute is set to either &apos;lax&apos; or ideally &apos;strict&apos; for all cookies.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://tools.ietf.org/html/draft-ietf-httpbis-cookie-same-site&lt;/p&gt;</reference>
+						<cweid>1275</cweid>
+						<wascid>13</wascid>
+						<sourceid>12</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10017</pluginid>
+						<alertRef>10017</alertRef>
+						<alert>Cross-Domain JavaScript Source File Inclusion</alert>
+						<name>Cross-Domain JavaScript Source File Inclusion</name>
+						<riskcode>1</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Low (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The page includes one or more script files from a third-party domain.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param>http://html5shim.googlecode.com/svn/trunk/html5.js</param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param>https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js</param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot;
+        src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param>https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js</param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot; src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param>http://html5shim.googlecode.com/svn/trunk/html5.js</param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param>https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js</param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot;
+        src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param>https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js</param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot; src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/register</uri>
+									<method>GET</method>
+									<param>http://html5shim.googlecode.com/svn/trunk/html5.js</param>
+									<attack></attack>
+									<evidence>&lt;script src=&quot;http://html5shim.googlecode.com/svn/trunk/html5.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/register</uri>
+									<method>GET</method>
+									<param>https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js</param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot;
+        src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/register</uri>
+									<method>GET</method>
+									<param>https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js</param>
+									<attack></attack>
+									<evidence>&lt;script type=&quot;text/javascript&quot; src=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js&quot;&gt;&lt;/script&gt;</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>9</count>
+						<solution>&lt;p&gt;Ensure JavaScript source files are loaded from only trusted sources, and the sources can&apos;t be controlled by end users of the application.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference></reference>
+						<cweid>829</cweid>
+						<wascid>15</wascid>
+						<sourceid>20</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10063</pluginid>
+						<alertRef>10063-1</alertRef>
+						<alert>Permissions Policy Header Not Set</alert>
+						<name>Permissions Policy Header Not Set</name>
+						<riskcode>1</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Low (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;Permissions Policy Header is an added layer of security that helps to restrict from unauthorized access or usage of browser/client features by web resources. This policy ensures the user privacy by limiting or specifying the features of the browsers can be used by the web resources. Permissions Policy provides a set of standard HTTP headers that allow website owners to limit which features of browsers can be used by the page such as camera, microphone, location, full screen etc.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/assets/jquery-3.2.1.min.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/assets/showdown.min.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/register</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/robots.txt</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/sitemap.xml</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>7</count>
+						<solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to set the Permissions-Policy header.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy&lt;/p&gt;&lt;p&gt;https://developer.chrome.com/blog/feature-policy/&lt;/p&gt;&lt;p&gt;https://scotthelme.co.uk/a-new-security-header-feature-policy/&lt;/p&gt;&lt;p&gt;https://w3c.github.io/webappsec-feature-policy/&lt;/p&gt;&lt;p&gt;https://www.smashingmagazine.com/2018/12/feature-policy/&lt;/p&gt;</reference>
+						<cweid>693</cweid>
+						<wascid>15</wascid>
+						<sourceid>26</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10037</pluginid>
+						<alertRef>10037</alertRef>
+						<alert>Server Leaks Information via &quot;X-Powered-By&quot; HTTP Response Header Field(s)</alert>
+						<name>Server Leaks Information via &quot;X-Powered-By&quot; HTTP Response Header Field(s)</name>
+						<riskcode>1</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Low (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The web/application server is leaking information via one or more &quot;X-Powered-By&quot; HTTP response headers. Access to such information may facilitate attackers identifying other frameworks/components your web application is reliant upon and the vulnerabilities such components may be subject to.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/assets/fa/css/font-awesome.min.css</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/learn</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/register</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/robots.txt</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/sitemap.xml</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>X-Powered-By: Express</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>11</count>
+						<solution>&lt;p&gt;Ensure that your web server, application server, load balancer, etc. is configured to suppress &quot;X-Powered-By&quot; headers.&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://owasp.org/www-project-web-security-testing-guide/v42/4-Web_Application_Security_Testing/01-Information_Gathering/08-Fingerprint_Web_Application_Framework&lt;/p&gt;&lt;p&gt;https://www.troyhunt.com/2012/02/shhh-dont-let-your-response-headers.html&lt;/p&gt;</reference>
+						<cweid>200</cweid>
+						<wascid>13</wascid>
+						<sourceid>12</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10021</pluginid>
+						<alertRef>10021</alertRef>
+						<alert>X-Content-Type-Options Header Missing</alert>
+						<name>X-Content-Type-Options Header Missing</name>
+						<riskcode>1</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Low (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The Anti-MIME-Sniffing header X-Content-Type-Options was not set to &apos;nosniff&apos;. This allows older versions of Internet Explorer and Chrome to perform MIME-sniffing on the response body, potentially causing the response body to be interpreted and displayed as a content type other than the declared content type. Current (early 2014) and legacy versions of Firefox will use the declared content type (if one is set), rather than performing MIME-sniffing.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/assets/fa/css/font-awesome.min.css</uri>
+									<method>GET</method>
+									<param>x-content-type-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/assets/jquery-3.2.1.min.js</uri>
+									<method>GET</method>
+									<param>x-content-type-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/assets/showdown.min.js</uri>
+									<method>GET</method>
+									<param>x-content-type-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param>x-content-type-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param>x-content-type-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/register</uri>
+									<method>GET</method>
+									<param>x-content-type-options</param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.
+At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.</otherinfo>
+								</instance>
+							
+						</instances>
+						<count>6</count>
+						<solution>&lt;p&gt;Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to &apos;nosniff&apos; for all web pages.&lt;/p&gt;&lt;p&gt;If possible, ensure that the end user uses a standards-compliant and modern web browser that does not perform MIME-sniffing at all, or that can be directed by the web application/web server to not perform MIME-sniffing.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;This issue still applies to error type pages (401, 403, 500, etc.) as those pages are often still affected by injection issues, in which case there is still concern for browsers sniffing pages away from their actual content type.&lt;/p&gt;&lt;p&gt;At &quot;High&quot; threshold this scan rule will not alert on client or server error responses.&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;https://learn.microsoft.com/en-us/previous-versions/windows/internet-explorer/ie-developer/compatibility/gg622941(v=vs.85)&lt;/p&gt;&lt;p&gt;https://owasp.org/www-community/Security_Headers&lt;/p&gt;</reference>
+						<cweid>693</cweid>
+						<wascid>15</wascid>
+						<sourceid>21</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10111</pluginid>
+						<alertRef>10111</alertRef>
+						<alert>Authentication Request Identified</alert>
+						<name>Authentication Request Identified</name>
+						<riskcode>0</riskcode>
+						<confidence>3</confidence>
+						<riskdesc>Informational (High)</riskdesc>
+						<confidencedesc>High</confidencedesc>
+						<desc>&lt;p&gt;The given request has been identified as an authentication request. The &apos;Other Info&apos; field contains a set of key=value lines which identify any relevant fields. If the request is in a context which has an Authentication Method set to &quot;Auto-Detect&quot; then this rule will change the authentication to match the request identified.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>POST</method>
+									<param>username</param>
+									<attack></attack>
+									<evidence>password</evidence>
+									<otherinfo>userParam=username
+userValue=ZAP
+passwordParam=password
+referer=http://localhost:9090/login</otherinfo>
+								</instance>
+							
+						</instances>
+						<count>1</count>
+						<solution>&lt;p&gt;This is an informational alert rather than a vulnerability and so there is nothing to fix.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;userParam=username&lt;/p&gt;&lt;p&gt;userValue=ZAP&lt;/p&gt;&lt;p&gt;passwordParam=password&lt;/p&gt;&lt;p&gt;referer=http://localhost:9090/login&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;https://www.zaproxy.org/docs/desktop/addons/authentication-helper/auth-req-id/&lt;/p&gt;</reference>
+						<cweid>-1</cweid>
+						<wascid>-1</wascid>
+						<sourceid>31</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10027</pluginid>
+						<alertRef>10027</alertRef>
+						<alert>Information Disclosure - Suspicious Comments</alert>
+						<name>Information Disclosure - Suspicious Comments</name>
+						<riskcode>0</riskcode>
+						<confidence>1</confidence>
+						<riskdesc>Informational (Low)</riskdesc>
+						<confidencedesc>Low</confidencedesc>
+						<desc>&lt;p&gt;The response appears to contain suspicious comments which may help an attacker. Note: Matches made within script blocks or files are against the entire content not only comments.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/assets/jquery-3.2.1.min.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>db</evidence>
+									<otherinfo>The following pattern was used: \bDB\b and was detected 2 times, the first in the element starting with: &quot;a.removeEventListener(&quot;load&quot;,S),r.ready()}&quot;complete&quot;===d.readyState||&quot;loading&quot;!==d.readyState&amp;&amp;!d.documentElement.doScroll?a.set&quot;, see evidence field for the suspicious comment/snippet.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/assets/jquery-3.2.1.min.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>select</evidence>
+									<otherinfo>The following pattern was used: \bSELECT\b and was detected in the element starting with: &quot;!function(a,b){&quot;use strict&quot;;&quot;object&quot;==typeof module&amp;&amp;&quot;object&quot;==typeof module.exports?module.exports=a.document?b(a,!0):function(&quot;, see evidence field for the suspicious comment/snippet.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/assets/showdown.min.js</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>from</evidence>
+									<otherinfo>The following pattern was used: \bFROM\b and was detected in the element starting with: &quot;(function(){function a(a){&quot;use strict&quot;;var b={omitExtraWLInCodeBlocks:{defaultValue:!1,describe:&quot;Omit the default extra whitelin&quot;, see evidence field for the suspicious comment/snippet.</otherinfo>
+								</instance>
+							
+						</instances>
+						<count>3</count>
+						<solution>&lt;p&gt;Remove all comments that return information that may help an attacker and fix any underlying problems they refer to.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;The following pattern was used: \bDB\b and was detected 2 times, the first in the element starting with: &quot;a.removeEventListener(&quot;load&quot;,S),r.ready()}&quot;complete&quot;===d.readyState||&quot;loading&quot;!==d.readyState&amp;&amp;!d.documentElement.doScroll?a.set&quot;, see evidence field for the suspicious comment/snippet.&lt;/p&gt;</otherinfo>
+						<reference></reference>
+						<cweid>200</cweid>
+						<wascid>13</wascid>
+						<sourceid>26</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>90033</pluginid>
+						<alertRef>90033</alertRef>
+						<alert>Loosely Scoped Cookie</alert>
+						<name>Loosely Scoped Cookie</name>
+						<riskcode>0</riskcode>
+						<confidence>1</confidence>
+						<riskdesc>Informational (Low)</riskdesc>
+						<confidencedesc>Low</confidencedesc>
+						<desc>&lt;p&gt;Cookies can be scoped by domain or path. This check is only concerned with domain scope.The domain scope applied to a cookie determines which domains can access it. For example, a cookie can be scoped strictly to a subdomain e.g. www.nottrusted.com, or loosely scoped to a parent domain e.g. nottrusted.com. In the latter case, any subdomain of nottrusted.com can access the cookie. Loosely scoped cookies are common in mega-applications like google.com and live.com. Cookies set from a subdomain like app.foo.bar are transmitted only to that domain by the browser. However, cookies scoped to a parent-level domain may be transmitted to the parent, or any subdomain of the parent.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>The origin domain used for comparison was:
+localhost
+connect.sid=s%3AkzTU-N5M0a5BbjBCQHL7EtWA0hk16KE_.AGO4px5GF4QGn4pAnCD6%2FdBqPy3%2B8R5rFOcVMxJmw54
+</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>The origin domain used for comparison was:
+localhost
+connect.sid=s%3AGfZ9D3Yf4OPd83hwOh8SkOcit0OPtuyW.6fcwQCjPa3Aqb32KavFTvzjUp%2BUtvrWTL4SGgEkKx%2Bw
+</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>The origin domain used for comparison was:
+localhost
+connect.sid=s%3AYG3eBIhXnsqzxKe6FkS85O5HE0_1hYmE.bYcV9%2BbYXj0jLDvDDqaR%2B2r8xGxge4QtQBIpir%2BlzZc
+</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>The origin domain used for comparison was:
+localhost
+connect.sid=s%3A20Dpd2Eefzyiani480pTs5HSTndY-_qI.ha3zVHMJY2Yps2omd58K7KZ%2FrGFsrnwqfFkm05fioko
+</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/robots.txt</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>The origin domain used for comparison was:
+localhost
+connect.sid=s%3AWdeOBpYD38J8BXNKX4iDkcN37cwEb2vp.KSrjjiOkUdN20raqg8tn%2BabUuhMoN%2BIhxfpvJbQA2Dg
+</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/sitemap.xml</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>The origin domain used for comparison was:
+localhost
+connect.sid=s%3AaD-3kkiHVf1F1R_iVoymTN6tkZhP4BIX.tpaSZVyO9fwGTqlVahokZ1yrEEAl%2B6XWh3OX8LTb7sk
+</otherinfo>
+								</instance>
+							
+						</instances>
+						<count>6</count>
+						<solution>&lt;p&gt;Always scope cookies to a FQDN (Fully Qualified Domain Name).&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;The origin domain used for comparison was:&lt;/p&gt;&lt;p&gt;localhost&lt;/p&gt;&lt;p&gt;connect.sid=s%3AkzTU-N5M0a5BbjBCQHL7EtWA0hk16KE_.AGO4px5GF4QGn4pAnCD6%2FdBqPy3%2B8R5rFOcVMxJmw54&lt;/p&gt;&lt;p&gt;&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;https://tools.ietf.org/html/rfc6265#section-4.1&lt;/p&gt;&lt;p&gt;https://owasp.org/www-project-web-security-testing-guide/v41/4-Web_Application_Security_Testing/06-Session_Management_Testing/02-Testing_for_Cookies_Attributes.html&lt;/p&gt;&lt;p&gt;https://code.google.com/p/browsersec/wiki/Part2#Same-origin_policy_for_cookies&lt;/p&gt;</reference>
+						<cweid>565</cweid>
+						<wascid>15</wascid>
+						<sourceid>12</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10049</pluginid>
+						<alertRef>10049</alertRef>
+						<alert>Non-Storable Content</alert>
+						<name>Non-Storable Content</name>
+						<riskcode>0</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Informational (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The response contents are not storable by caching components such as proxy servers. If the response does not contain sensitive, personal or user-specific information, it may benefit from being stored and cached, to improve performance.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>302</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>302</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/learn</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>302</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>302</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>POST</method>
+									<param></param>
+									<attack></attack>
+									<evidence>302</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>5</count>
+						<solution>&lt;p&gt;The content may be marked as storable by ensuring that the following conditions are satisfied:&lt;/p&gt;&lt;p&gt;The request method must be understood by the cache and defined as being cacheable (&quot;GET&quot;, &quot;HEAD&quot;, and &quot;POST&quot; are currently defined as cacheable)&lt;/p&gt;&lt;p&gt;The response status code must be understood by the cache (one of the 1XX, 2XX, 3XX, 4XX, or 5XX response classes are generally understood)&lt;/p&gt;&lt;p&gt;The &quot;no-store&quot; cache directive must not appear in the request or response header fields&lt;/p&gt;&lt;p&gt;For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;private&quot; response directive must not appear in the response&lt;/p&gt;&lt;p&gt;For caching by &quot;shared&quot; caches such as &quot;proxy&quot; caches, the &quot;Authorization&quot; header field must not appear in the request, unless the response explicitly allows it (using one of the &quot;must-revalidate&quot;, &quot;public&quot;, or &quot;s-maxage&quot; Cache-Control response directives)&lt;/p&gt;&lt;p&gt;In addition to the conditions above, at least one of the following conditions must also be satisfied by the response:&lt;/p&gt;&lt;p&gt;It must contain an &quot;Expires&quot; header field&lt;/p&gt;&lt;p&gt;It must contain a &quot;max-age&quot; response directive&lt;/p&gt;&lt;p&gt;For &quot;shared&quot; caches such as &quot;proxy&quot; caches, it must contain a &quot;s-maxage&quot; response directive&lt;/p&gt;&lt;p&gt;It must contain a &quot;Cache Control Extension&quot; that allows it to be cached&lt;/p&gt;&lt;p&gt;It must have a status code that is defined as cacheable by default (200, 203, 204, 206, 300, 301, 404, 405, 410, 414, 501).&lt;/p&gt;</solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
+						<cweid>524</cweid>
+						<wascid>13</wascid>
+						<sourceid>12</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10112</pluginid>
+						<alertRef>10112</alertRef>
+						<alert>Session Management Response Identified</alert>
+						<name>Session Management Response Identified</name>
+						<riskcode>0</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Informational (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The given response has been identified as containing a session management token. The &apos;Other Info&apos; field contains a set of header tokens that can be used in the Header Based Session Management Method. If the request is in a context which has a Session Management Method set to &quot;Auto-Detect&quot; then this rule will change the session management to use the tokens identified.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>s%3AkzTU-N5M0a5BbjBCQHL7EtWA0hk16KE_.AGO4px5GF4QGn4pAnCD6%2FdBqPy3%2B8R5rFOcVMxJmw54</evidence>
+									<otherinfo>
+cookie:connect.sid</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>s%3AGfZ9D3Yf4OPd83hwOh8SkOcit0OPtuyW.6fcwQCjPa3Aqb32KavFTvzjUp%2BUtvrWTL4SGgEkKx%2Bw</evidence>
+									<otherinfo>
+cookie:connect.sid</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>s%3AYG3eBIhXnsqzxKe6FkS85O5HE0_1hYmE.bYcV9%2BbYXj0jLDvDDqaR%2B2r8xGxge4QtQBIpir%2BlzZc</evidence>
+									<otherinfo>
+cookie:connect.sid</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>s%3A20Dpd2Eefzyiani480pTs5HSTndY-_qI.ha3zVHMJY2Yps2omd58K7KZ%2FrGFsrnwqfFkm05fioko</evidence>
+									<otherinfo>
+cookie:connect.sid</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/robots.txt</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>s%3AWdeOBpYD38J8BXNKX4iDkcN37cwEb2vp.KSrjjiOkUdN20raqg8tn%2BabUuhMoN%2BIhxfpvJbQA2Dg</evidence>
+									<otherinfo>
+cookie:connect.sid</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/sitemap.xml</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>s%3AaD-3kkiHVf1F1R_iVoymTN6tkZhP4BIX.tpaSZVyO9fwGTqlVahokZ1yrEEAl%2B6XWh3OX8LTb7sk</evidence>
+									<otherinfo>
+cookie:connect.sid</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>s%3AYG3eBIhXnsqzxKe6FkS85O5HE0_1hYmE.bYcV9%2BbYXj0jLDvDDqaR%2B2r8xGxge4QtQBIpir%2BlzZc</evidence>
+									<otherinfo>
+cookie:connect.sid</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param>connect.sid</param>
+									<attack></attack>
+									<evidence>s%3A20Dpd2Eefzyiani480pTs5HSTndY-_qI.ha3zVHMJY2Yps2omd58K7KZ%2FrGFsrnwqfFkm05fioko</evidence>
+									<otherinfo>
+cookie:connect.sid</otherinfo>
+								</instance>
+							
+						</instances>
+						<count>8</count>
+						<solution>&lt;p&gt;This is an informational alert rather than a vulnerability and so there is nothing to fix.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;&lt;/p&gt;&lt;p&gt;cookie:connect.sid&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;https://www.zaproxy.org/docs/desktop/addons/authentication-helper/session-mgmt-id&lt;/p&gt;</reference>
+						<cweid>-1</cweid>
+						<wascid>-1</wascid>
+						<sourceid>12</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10049</pluginid>
+						<alertRef>10049</alertRef>
+						<alert>Storable and Cacheable Content</alert>
+						<name>Storable and Cacheable Content</name>
+						<riskcode>0</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Informational (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The response contents are storable by caching components such as proxy servers, and may be retrieved directly from the cache, rather than from the origin server by the caching servers, in response to similar requests from other users. If the response data is sensitive, personal or user-specific, this may result in sensitive information being leaked. In some cases, this may even result in a user gaining complete control of the session of another user, depending on the configuration of the caching components in use in their environment. This is primarily an issue where &quot;shared&quot; caching servers such as &quot;proxy&quot; caches are configured on the local network. This configuration is typically found in corporate or educational environments, for instance.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/forgotpw</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/login</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/robots.txt</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</otherinfo>
+								</instance>
+							
+							
+								<instance>
+									<uri>http://localhost:9090/sitemap.xml</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence></evidence>
+									<otherinfo>In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.</otherinfo>
+								</instance>
+							
+						</instances>
+						<count>4</count>
+						<solution>&lt;p&gt;Validate that the response does not contain sensitive, personal or user-specific information. If it does, consider the use of the following HTTP response headers, to limit, or prevent the content being stored and retrieved from the cache by another user:&lt;/p&gt;&lt;p&gt;Cache-Control: no-cache, no-store, must-revalidate, private&lt;/p&gt;&lt;p&gt;Pragma: no-cache&lt;/p&gt;&lt;p&gt;Expires: 0&lt;/p&gt;&lt;p&gt;This configuration directs both HTTP 1.0 and HTTP 1.1 compliant caching servers to not store the response, and to not retrieve the response (without validation) from the cache, in response to a similar request.&lt;/p&gt;</solution>
+						<otherinfo>&lt;p&gt;In the absence of an explicitly specified caching lifetime directive in the response, a liberal lifetime heuristic of 1 year was assumed. This is permitted by rfc7234.&lt;/p&gt;</otherinfo>
+						<reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
+						<cweid>524</cweid>
+						<wascid>13</wascid>
+						<sourceid>20</sourceid>
+					</alertitem>
+				
+				
+					<alertitem>
+						<pluginid>10049</pluginid>
+						<alertRef>10049</alertRef>
+						<alert>Storable but Non-Cacheable Content</alert>
+						<name>Storable but Non-Cacheable Content</name>
+						<riskcode>0</riskcode>
+						<confidence>2</confidence>
+						<riskdesc>Informational (Medium)</riskdesc>
+						<confidencedesc>Medium</confidencedesc>
+						<desc>&lt;p&gt;The response contents are storable by caching components such as proxy servers, but will not be retrieved directly from the cache, without validating the request upstream, in response to similar requests from other users.&lt;/p&gt;</desc>
+						<instances>
+							
+								<instance>
+									<uri>http://localhost:9090/assets/fa/css/font-awesome.min.css</uri>
+									<method>GET</method>
+									<param></param>
+									<attack></attack>
+									<evidence>max-age=0</evidence>
+									<otherinfo></otherinfo>
+								</instance>
+							
+						</instances>
+						<count>1</count>
+						<solution></solution>
+						<otherinfo></otherinfo>
+						<reference>&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7234&lt;/p&gt;&lt;p&gt;https://datatracker.ietf.org/doc/html/rfc7231&lt;/p&gt;&lt;p&gt;https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html&lt;/p&gt;</reference>
+						<cweid>524</cweid>
+						<wascid>13</wascid>
+						<sourceid>21</sourceid>
+					</alertitem>
+				
+			</alerts>
+		</site>
+	
+</OWASPZAPReport>
