@@ -22,6 +22,7 @@ jobs:
           MYSQL_USER: dvna
           MYSQL_PASSWORD: passw0rd
           MYSQL_DATABASE: dvna
+          MYSQL_RANDOM_ROOT_PASSWORD: yes
         ports:
           - 3306:3306
         options: >-
@@ -65,6 +66,7 @@ jobs:
           MYSQL_USER: dvna
           MYSQL_PASSWORD: passw0rd
           MYSQL_DATABASE: dvna
+          MYSQL_RANDOM_ROOT_PASSWORD: yes
         run: npm start &
 
       # Étape 7 : Attendre que l'application soit disponible sur le port 9090
