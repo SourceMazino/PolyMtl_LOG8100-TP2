@@ -1,0 +1,48 @@
+name: CI Pipeline for DVNA
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  security_scan:
+    name: OWASP ZAP Security Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Récupérer le code source du dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Étape 2 : Installer Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      # Étape 3 : Installer les dépendances
+      - name: Install dependencies
+        run: npm install
+
+      # Étape 4 : Installer wait-on pour attendre que l'application soit prête
+      - name: Install wait-on
+        run: npm install -g wait-on
+
+      # Étape 5 : Démarrer l'application en arrière-plan
+      - name: Start the application
+        run: npm start &
+
+      # Étape 6 : Attendre que l'application soit disponible sur le port 3000
+      - name: Wait for the application to start
+        run: wait-on http://localhost:9090
+
+      # Étape 7 : Lancer le scan OWASP ZAP
+      - name: Run OWASP ZAP full scan
+        uses: zaproxy/action-full-scan@v0.2.0
+        with:
+          target: 'http://localhost:9090'
+
