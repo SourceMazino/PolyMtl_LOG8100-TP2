@@ -72,8 +72,7 @@ jobs:
           token: ${{ secrets.TOKEN_DVNA }}
           docker_name: 'ghcr.io/zaproxy/zaproxy:stable'
           target: 'http://127.0.0.1:9090'
-          format: 'json'  # Générer le rapport au format JSON
-          report: "docs/zap/zap-report-$(date +'%Y%m%d%H%M%S').json"
+          cmd_options: '-J "docs/zap/zap-report-$(date +'%Y%m%d%H%M%S').json"'
         continue-on-error: true
       
       # Étape 8 : Commiter et pousser le rapport dans docs/zap/
