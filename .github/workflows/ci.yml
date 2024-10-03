@@ -17,13 +17,13 @@ jobs:
       postgres:
         image: postgres:13
         env:
-          POSTGRES_USER: dvna
-          POSTGRES_PASSWORD: passw0rd
-          POSTGRES_DB: dvna
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         ports:
-          - 5432:5432
+          - ${{ vars.POSTGRES_PORT }}:${{ vars.POSTGRES_PORT }}
         options: >-
-          --health-cmd="pg_isready -U dvna"
+          --health-cmd="pg_isready -U ${{ secrets.POSTGRES_USER }}"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=3
@@ -50,7 +50,7 @@ jobs:
       # Étape 5 : Attendre que PostgreSQL soit disponible
       - name: Wait for PostgreSQL
         run: |
-            while ! pg_isready -h "127.0.0.1" -p 5432 -U dvna ; do
+            while ! pg_isready -h "${{ vars.POSTGRES_HOST }}" -p ${{ vars.POSTGRES_PORT }} -U ${{ secrets.POSTGRES_USER }}; do
               echo "Waiting for PostgreSQL...";
               sleep 5;
             done
@@ -58,11 +58,11 @@ jobs:
       # Étape 6 : Démarrer l'application en arrière-plan
       - name: Start the application
         env:
-          POSTGRES_HOST: 127.0.0.1
-          POSTGRES_PORT: 5432
-          POSTGRES_USER: dvna
-          POSTGRES_PASSWORD: passw0rd
-          POSTGRES_DB: dvna
+          POSTGRES_HOST: ${{ vars.POSTGRES_HOST }}
+          POSTGRES_PORT: ${{ vars.POSTGRES_PORT }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         run: npm start &
 
       # Étape 7 : Lancer le scan OWASP ZAP
