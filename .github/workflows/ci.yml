@@ -70,7 +70,7 @@ jobs:
           MYSQL_RANDOM_ROOT_PASSWORD: yes
         run: npm start &
 
-      # # Étape 7 : Attendre que l'application soit disponible sur le port 9090
+      # Étape 7 : Attendre que l'application soit disponible sur le port 9090
       # - name: Wait for the application to start
       #   run: wait-on http://localhost:9090
 
