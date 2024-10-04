@@ -1,0 +1,55 @@
+name: Dependabot Update Checker
+
+on:
+  pull_request:
+    branches:
+      - "dependabot/*" 
+jobs:
+  test-dependabot-update:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: dvna
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready" 
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '8.12.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start the application and check PostgreSQL connection
+        env:
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: dvna
+          POSTGRES_HOST: 127.0.0.1
+        run: |
+          npm start &
+          sleep 10  # Donne un peu de temps à l'application pour se lancer
+          curl http://localhost:9090  # Vérifie si l'application répond
+
+      - name: Merge into dev if successful
+        run: |
+          git checkout dev
+          git merge --no-ff ${{ github.head_ref }}
+          git push origin dev
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
