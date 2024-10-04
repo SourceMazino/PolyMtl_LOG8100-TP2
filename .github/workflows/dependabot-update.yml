@@ -3,7 +3,7 @@ name: Dependabot Update Checker
 on:
   pull_request:
     branches:
-      - "dependabot/*" 
+      - "dependabot-*" 
 jobs:
   test-dependabot-update:
     runs-on: ubuntu-latest
