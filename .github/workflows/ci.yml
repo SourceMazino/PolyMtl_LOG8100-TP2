@@ -65,8 +65,7 @@ jobs:
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         run: npm start &
       
-      - name: Get current date
-        run: echo "CURRENT_DATE=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
      
       # Étape 7 : Lancer le scan OWASP ZAP et générer un rapport JSON dans /zap/wrk/
       - name: Run OWASP ZAP full scan
@@ -85,3 +84,37 @@ jobs:
       #     git push origin main
       #   env:
       #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  codeql_scan:
+    name: CodeQL Security Analysis
+    needs: security_scan
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Récupérer le code source du dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Étape 2 : Initialiser CodeQL
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: 'javascript'
+
+      # Étape 3 : Exécuter l'analyse CodeQL et générer le rapport dans 'docs/CodeQL'
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          output: 'docs/CodeQL/codeql-report.sarif'
+      
+      - name: Get current date
+        run: echo "CURRENT_DATE=$(date +'%Y%m%d%H%M%S')" >> $GITHUB_ENV
+
+      # Étape 4 : Commiter et pousser le rapport dans docs/CodeQL/
+      - name: Commit and Push CodeQL Report
+        run: |
+          git add docs/CodeQL/codeql-report-$(date +'%Y%m%d%H%M%S').sarif
+          git commit -m "Add CodeQL report"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
