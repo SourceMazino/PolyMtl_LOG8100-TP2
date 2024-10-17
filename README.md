@@ -25,4 +25,3 @@ Start the application
 npm start
 ```
 Access the application at [http://localhost:9090](http://localhost:9090)
-test
