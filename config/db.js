@@ -4,6 +4,11 @@ module.exports = {
   database: process.env.POSTGRES_DB,
   host: process.env.POSTGRES_HOST || 'localhost',
   port: process.env.POSTGRES_PORT || 5432,
-  dialect: 'postgres'
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,  // Ignore les problèmes de certificat auto-signé
+    },
+  },
 };
-
