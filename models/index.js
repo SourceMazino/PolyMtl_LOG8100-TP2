@@ -6,8 +6,49 @@ var Sequelize = require("sequelize");
 var env = process.env.NODE_ENV || "development";
 var config = require("../config/db.js")
 
+// Ajoutez ceci pour voir les valeurs des variables d'environnement
+console.log('Database connection details:');
+console.log('User:', process.env.POSTGRES_USER);
+console.log('Password:', process.env.POSTGRES_PASSWORD);
+console.log('Database:', process.env.POSTGRES_DB);
+console.log('Host:', process.env.POSTGRES_HOST);
+console.log('Port:', process.env.POSTGRES_PORT);
+console.log('DATABASE_URL:', process.env.DATABASE_URL);
+
 if (process.env.DATABASE_URL) {
-  var sequelize = new Sequelize(process.env.DATABASE_URL);
+  var sequel"use strict";
+
+module.exports = function (sequelize, DataTypes) {
+    var User = sequelize.define("User", {
+        id: {
+            type: DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        login: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        role: {
+            type: DataTypes.STRING,
+            allowNull: true
+        }
+    });
+    return User;
+};ize = new Sequelize(process.env.DATABASE_URL);
 } else {
   var sequelize = new Sequelize(config.database, config.username, config.password, {
     host: config.host,
