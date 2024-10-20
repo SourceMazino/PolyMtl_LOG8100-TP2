@@ -6,14 +6,7 @@ var Sequelize = require("sequelize");
 var env = process.env.NODE_ENV || "development";
 var config = require("../config/db.js")
 
-// Ajoutez ceci pour voir les valeurs des variables d'environnement
-console.log('Database connection details:');
-console.log('User:', process.env.POSTGRES_USER);
-console.log('Password:', process.env.POSTGRES_PASSWORD);
-console.log('Database:', process.env.POSTGRES_DB);
-console.log('Host:', process.env.POSTGRES_HOST);
-console.log('Port:', process.env.POSTGRES_PORT);
-console.log('DATABASE_URL:', process.env.DATABASE_URL);
+
 
 if (process.env.DATABASE_URL) {
   var sequel"use strict";
