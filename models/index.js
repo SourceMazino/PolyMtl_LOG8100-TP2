@@ -6,11 +6,6 @@ var Sequelize = require("sequelize");
 var env = process.env.NODE_ENV || "development";
 var config = require("../config/db.js")
 
-
-
-if (process.env.DATABASE_URL) {
-  var sequel"use strict";
-
 module.exports = function (sequelize, DataTypes) {
     var User = sequelize.define("User", {
         id: {
