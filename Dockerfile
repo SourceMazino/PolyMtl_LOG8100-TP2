@@ -36,8 +36,6 @@ COPY package*.json ./
 
 RUN npm install
 
-RUN nodemon
-
 COPY . .
 
 EXPOSE 9090
