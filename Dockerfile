@@ -24,20 +24,3 @@ RUN . ~/.nvm/nvm.sh && npm uninstall bcrypt && npm install bcrypt
 EXPOSE 9090
 
 CMD ["/bin/bash", "-c", ". ~/.nvm/nvm.sh && npm start"]
-
-# Damn Vulnerable NodeJS Application
-
-# FROM node:carbon
-# LABEL MAINTAINER "Subash SN"
-
-# WORKDIR /app
-
-# COPY package*.json ./
-
-# RUN npm install
-
-# COPY . .
-
-# EXPOSE 9090
-
-# CMD ["npm", "start"]
