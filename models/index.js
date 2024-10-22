@@ -4,62 +4,52 @@ var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
 var env = process.env.NODE_ENV || "development";
-var config = require("../config/db.js")
+var config = require("../config/db.js");
 
-module.exports = function (sequelize, DataTypes) {
-    var User = sequelize.define("User", {
-        id: {
-            type: DataTypes.INTEGER,
-            autoIncrement: true,
-            primaryKey: true
-        },
-        name: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        login: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
-        },
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false
-        },
-        role: {
-            type: DataTypes.STRING,
-            allowNull: true
-        }
-    });
-    return User;
-};ize = new Sequelize(process.env.DATABASE_URL);
+let sequelizeOptions = {
+  host: config.host,
+  dialect: config.dialect,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+      }
+  }
+};
+
+if (process.env.DATABASE_URL) {
+  sequelizeOptions = {
+    ...sequelizeOptions,
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
+    }
+  };
+  
+  var sequelize = new Sequelize(process.env.DATABASE_URL, sequelizeOptions);
 } else {
-  var sequelize = new Sequelize(config.database, config.username, config.password, {
-    host: config.host,
-    dialect: config.dialect
-  });
+  var sequelize = new Sequelize(config.database, config.username, config.password, sequelizeOptions);
 }
 
 sequelize
   .authenticate()
-  .then(function (err) {
+  .then(function () {
     console.log('Connection has been established successfully.');
   })
   .catch(function (err) {
     console.log('Unable to connect to the database:', err);
-  })
+  });
 
 sequelize
-  .sync( /*{ force: true }*/ ) // Force To re-initialize tables on each run
-  .then(function (err) {
+  .sync( /*{ force: true }*/ ) // Force to re-initialize tables on each run
+  .then(function () {
     console.log('It worked!');
-  }, function (err) {
-    console.log('An error occurred while creating the table:', err);
   })
+  .catch(function (err) {
+    console.log('An error occurred while creating the table:', err);
+  });
 
 var db = {};
 
