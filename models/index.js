@@ -10,10 +10,7 @@ let sequelizeOptions = {
   host: config.host,
   dialect: config.dialect,
   dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-      }
+    ssl: true
   }
 };
 
@@ -21,10 +18,7 @@ if (process.env.DATABASE_URL) {
   sequelizeOptions = {
     ...sequelizeOptions,
     dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false
-      }
+      ssl: true
     }
   };
   
