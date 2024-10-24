@@ -16,6 +16,25 @@ app.use(morgan('tiny'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(fileUpload());
 
+//Test de la base de donnée
+const { Client } = require('pg');
+
+// Test de connexion à PostgreSQL
+const client = new Client({
+  user: process.env.POSTGRES_USER,
+  host: process.env.POSTGRES_HOST,
+  database: process.env.POSTGRES_DB,
+  password: process.env.POSTGRES_PASSWORD,
+  port: process.env.POSTGRES_PORT,
+  ssl: {
+    rejectUnauthorized: false,  // Nécessaire pour les connexions SSL vers Azure PostgreSQL
+  },
+});
+
+client.connect()
+  .then(() => console.log('Connected to PostgreSQL on Azure'))
+  .catch(err => console.error('Connection error', err.stack));
+
 // Enable for Reverse proxy support
 // app.set('trust proxy', 1) 
 
